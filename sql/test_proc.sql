@@ -10,5 +10,3 @@ begin
 	order by MeasureTime desc;
 end;
 go
-
-exec ReqProc 2
