@@ -25,10 +25,13 @@ namespace TestTask
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Power")]
 	public partial class LinqDbDataContext : System.Data.Linq.DataContext
 	{
+		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+		
     #region Определения метода расширяемости
     partial void OnCreated();
     #endregion
+		
 		public LinqDbDataContext() : 
 				base(global::TestTask.Properties.Settings.Default.PowerConnectionString, mappingSource)
 		{
@@ -58,8 +61,9 @@ namespace TestTask
 		{
 			OnCreated();
 		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ReqProc")]
-		public ISingleResult<ReqProcResult> ReqProc([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		public ISingleResult<ReqProcResult> ReqProc([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string id)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
 			return ((ISingleResult<ReqProcResult>)(result.ReturnValue));
@@ -68,9 +72,13 @@ namespace TestTask
 	
 	public partial class ReqProcResult
 	{
+		
 		private System.Nullable<System.DateTime> _MeasureTime;
+		
 		private string _DeviceCode;
+		
 		private System.Nullable<double> _P;
+		
 		public ReqProcResult()
 		{
 		}
@@ -78,28 +86,48 @@ namespace TestTask
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MeasureTime", DbType="SmallDateTime")]
 		public System.Nullable<System.DateTime> MeasureTime
 		{
-			get{return this._MeasureTime;}
-			set{if ((this._MeasureTime != value))
-				{this._MeasureTime = value;}
+			get
+			{
+				return this._MeasureTime;
+			}
+			set
+			{
+				if ((this._MeasureTime != value))
+				{
+					this._MeasureTime = value;
+				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeviceCode", DbType="VarChar(14)")]
 		public string DeviceCode
 		{
-			get{return this._DeviceCode;}
-			set{
+			get
+			{
+				return this._DeviceCode;
+			}
+			set
+			{
 				if ((this._DeviceCode != value))
-				{this._DeviceCode = value;}
+				{
+					this._DeviceCode = value;
+				}
 			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P", DbType="Float")]
 		public System.Nullable<double> P
 		{
-			get{return this._P;}
-			set{if ((this._P != value))
-				{this._P = value;}
+			get
+			{
+				return this._P;
+			}
+			set
+			{
+				if ((this._P != value))
+				{
+					this._P = value;
+				}
 			}
 		}
 	}

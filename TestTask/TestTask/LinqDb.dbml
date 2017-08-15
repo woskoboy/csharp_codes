@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Power" Class="LinqDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=WOBOY-DEV_HOME\SQLEXPRESS;Initial Catalog=Power;Integrated Security=True" SettingsObjectName="TestTask.Properties.Settings" SettingsPropertyName="PowerConnectionString" Provider="System.Data.SqlClient" />
   <Function Name="dbo.ReqProc" Method="ReqProc">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="ReqProcResult">
       <Column Name="MeasureTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="DeviceCode" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />

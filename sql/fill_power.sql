@@ -1,6 +1,6 @@
 use Power
 
-declare @sd smalldatetime = '20170605 17:45:00';
+declare @sd smalldatetime = '20170605 21:45:00';
 declare @n int = 21;
 declare @p float;
 declare @id int=1;
