@@ -8,12 +8,12 @@ namespace TestTask
 {
     class TestAsync
     {
-        /*static void Main()
-        {
-            DisplayResultAsync();
-            Console.WriteLine("Wait...");
-            Console.ReadLine();
-        }*/
+        //static void Main()
+        //{
+        //    DisplayResultAsync();
+        //    Console.WriteLine("Wait...");
+        //    Console.ReadLine();
+        //}
 
         static async void DisplayResultAsync()
         {

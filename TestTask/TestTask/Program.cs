@@ -4,9 +4,9 @@ namespace TestTask
 {
     class Program
     {
-        static void Main(string[] args)
+       static void Main(string[] args)
         {
-            string[] codes = { "E1", "E2" };
+            string[] codes = { "E3", "E2" };
             Power.AskEveryone(codes);
             Console.ReadLine();
         }
