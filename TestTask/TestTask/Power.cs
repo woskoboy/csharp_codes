@@ -1,35 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Config = System.Configuration;
 
 namespace TestTask
 {
     class Power
     {
-        public static void AskEveryone(string[] codes)
+        private LinqDbDataContext dataContext;
+        private string[] codes;
+
+        public Power (string[] codes_)
         {
-            foreach (var code in codes) { GetDevicePower(code); }
+            dataContext = new LinqDbDataContext(
+                Config.ConfigurationManager.ConnectionStrings["connect"].ConnectionString);
+            codes = codes_;
         }
 
-        private static void GetDevicePower(string code)
+        public async void AskEveryoneAsync()
         {
-            string conn_str = Config.ConfigurationManager.ConnectionStrings["connect"].ConnectionString;
-            LinqDbDataContext dataContext = new LinqDbDataContext(conn_str);
+            Task t = new Task(AskEveryone); t.Start();
+            await t;
+            Console.WriteLine("Done");
+            await Task.Delay(1000); Console.Clear();
+            AskEveryoneAsync();
+        }
+  
+        public void AskEveryone()
+        {
+            foreach (var code in codes){ GetDevicePower(code); }
+        }
+
+        private void GetDevicePower(string code)
+        { 
             try
             {
                 List<ReqProcResult> rows = dataContext.ReqProc(code).ToList();
+                Console.Write("{0}\n" ,rows[0].DeviceCode);
                 foreach (ReqProcResult row in rows)
                 {
-                    Console.WriteLine("{0} {1} {2}", ((DateTime)row.MeasureTime).ToString("HH:mm"),
-                        row.DeviceCode, row.P);
+                    Console.WriteLine("\t{0} [{1}]", ((DateTime)row.MeasureTime).ToString("HH:mm"), row.P);
                 }
-                Console.Write(new String('-', 10) + '\n');
+                Console.Write(new String('-', 20) + '\n');
             }
             catch (Exception ex)
             {
-                Console.WriteLine("{0}\n{2}\n{1}",
-                    ex.Message, ex.Data, new String('-', 50));
+                Console.WriteLine("{0}\n{1}", ex.Message, new String('-', 50));
             }
         }
     }
