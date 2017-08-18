@@ -1,5 +1,4 @@
-﻿#pragma warning disable 1591
-namespace TestTask
+﻿namespace TestTask
 {
     using System.Data.Linq;
     using System.Data.Linq.Mapping;
@@ -9,51 +8,47 @@ namespace TestTask
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Power")]
 	public partial class LinqDbDataContext : System.Data.Linq.DataContext
 	{
-		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();	
     #region Определения метода расширяемости
     partial void OnCreated();
     #endregion
-	
-		public LinqDbDataContext(string connection) : base(connection, mappingSource)
-		{
-			OnCreated();
-		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ReqProc")]
-		public ISingleResult<ReqProcResult> ReqProc([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string id)
+		public LinqDbDataContext() : 
+				base(global::TestTask.Properties.Settings.Default.PowerConnectionString, mappingSource)
+		{OnCreated();}
+		
+		public LinqDbDataContext(string connection) : 
+				base(connection, mappingSource)
+		{OnCreated();}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ParseString_and_FillTempTable")]
+		public ISingleResult<ParseString_and_FillTempTableResult> ParseString_and_FillTempTable([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(500)")] string cut_string)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
-			return ((ISingleResult<ReqProcResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cut_string);
+			return ((ISingleResult<ParseString_and_FillTempTableResult>)(result.ReturnValue));
 		}
 	}
 	
-
-	public partial class ReqProcResult
+	public partial class ParseString_and_FillTempTableResult
 	{
-		private System.Nullable<System.DateTime> _MeasureTime;
-		private string _DeviceCode;
-		private System.Nullable<double> _P;
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MeasureTime", DbType="SmallDateTime")]
-		public System.Nullable<System.DateTime> MeasureTime
+		private System.Nullable<int> _min_;
+		private System.Nullable<double> _accum_power;
+		public ParseString_and_FillTempTableResult()
 		{
-            get {return this._MeasureTime;}
-			set{this._MeasureTime = value;}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeviceCode", DbType="VarChar(14)")]
-		public string DeviceCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_min_", DbType="Int")]
+		public System.Nullable<int> min_
 		{
-            get {return this._DeviceCode;}
-			set{this._DeviceCode = value;}
+			get{return this._min_;}
+			set{ this._min_ = value; }
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_P", DbType="Float")]
-		public System.Nullable<double> P
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_accum_power", DbType="Float")]
+		public System.Nullable<double> accum_power
 		{
-			get{return this._P;}
-			set{this._P = value;}
+			get{return this._accum_power;}
+			set{this._accum_power = value;}
 		}
 	}
 }
-#pragma warning restore 1591
