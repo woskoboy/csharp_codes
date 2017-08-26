@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bee.cs" />
     <Compile Include="Qeen.cs" />
     <Compile Include="Worker.cs" />
     <Page Include="MainWindow.xaml">

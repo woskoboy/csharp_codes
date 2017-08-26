@@ -1,6 +1,6 @@
 ﻿namespace WpfIntroBee
 {
-    internal class Worker
+    internal class Worker : Bee
     {
         private string[] jobsICanDo; // что умею
 
@@ -13,8 +13,15 @@
         public string CurrentJob {
             get { return this.curentJob; } }
 
-        public Worker(string[] jobs)
+        public Worker(string[] jobs, double weightMg) : base(weightMg)
         { this.jobsICanDo = jobs;}
+
+        public override double HoneyConsumptionRate()
+        {
+            double consumption = base.HoneyConsumptionRate(); // потребление за смену с учетом веса
+            consumption += this.shiftsWorked * .65; // дополнительный мед за рабочую смену
+            return consumption;
+        }
 
         public bool DoThisJob(string job, int shifts)
         { // назначение задания рабочим
