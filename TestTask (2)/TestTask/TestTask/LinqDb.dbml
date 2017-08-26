@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Power" Class="LinqDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=WOBOY-DEV_HOME\SQLEXPRESS;Initial Catalog=Power;Integrated Security=True" SettingsObjectName="TestTask.Properties.Settings" SettingsPropertyName="PowerConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.ParseString_and_FillTempTable" Method="ParseString_and_FillTempTable">
+    <Parameter Name="cut_string" Type="System.String" DbType="VarChar(500)" />
+    <ElementType Name="ParseString_and_FillTempTableResult">
+      <Column Name="min_" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="accum_power" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

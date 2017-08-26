@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfIntroBee.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Bee's house" Height="350" Width="525">
+    <Grid>
+        <ComboBox x:Name="workerBeeJob" HorizontalAlignment="Left" Margin="40,58,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.204"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+            <ComboBoxItem Content="Nectar collector"/>
+            <ComboBoxItem Content="Honey manufacturing"/>
+            <ComboBoxItem Content="Egg care"/>
+            <ComboBoxItem Content="Baby bee tutoring"/>
+            <ComboBoxItem Content="Hive maintenance"/>
+            <ComboBoxItem Content="Sting patrol"/>
+        </ComboBox>
+        <Button x:Name="jobtBeeBut" Content="Assign this job to a bee" HorizontalAlignment="Left" Margin="40,100,0,0" VerticalAlignment="Top" Width="200" Click="assignJob_Click"/>
+        <Button x:Name="workShiftBut" Content="Work&#xD;&#xA;next&#xD;&#xA;shift!" HorizontalAlignment="Left" Margin="400,55,0,0" VerticalAlignment="Top" Width="80" Height="67" Click="workShift_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="40,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="155" Width="340"/>
+        <Label x:Name="label" Content="Job" HorizontalAlignment="Left" Margin="40,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.651,0.398" Width="200"/>
+        <Label x:Name="label_Copy" Content="Shifts" HorizontalAlignment="Left" Margin="260,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.651,0.398" Width="120"/>
+        <TextBox x:Name="shifts" HorizontalAlignment="Left" Height="21" Margin="261,60,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

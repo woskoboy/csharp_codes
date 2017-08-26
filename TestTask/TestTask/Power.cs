@@ -29,7 +29,7 @@ namespace TestTask
         public void AskEveryone()
         {
             try {
-                GetDevicePower(codes);
+                GetDevicePower(this.codes);
             }
             catch (Exception ex)  {
                 Console.WriteLine("{0}\n{1}", ex.Message, new String('-', 40));
@@ -45,7 +45,7 @@ namespace TestTask
                 foreach (ParseString_and_FillTempTableResult row in rows)
                 {
                     Console.WriteLine(s);
-                    Console.WriteLine("| минута {0} - потребление {1} кВт |", row.min_, row.accum_power, s);
+                    Console.WriteLine(" минута {0} - потребление {1} кВт ", row.min_, row.accum_power, s);
                 }
                 Console.Write(s);
             }
