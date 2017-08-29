@@ -60,6 +60,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bee.cs" />
+    <Compile Include="HibriteBee.cs" />
+    <Compile Include="NectarStinger.cs" />
     <Compile Include="Qeen.cs" />
     <Compile Include="Worker.cs" />
     <Page Include="MainWindow.xaml">

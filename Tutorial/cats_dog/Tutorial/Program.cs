@@ -11,6 +11,7 @@ namespace Tutorial
     {
         interface IGoEater{ void Eat(); void Go();}
         interface ISecurity : IGoEater { void Guard(); }
+
         class Dog : IGoEater, ISecurity
         {
             public void Eat() { Console.WriteLine("Dog eat"); }
@@ -26,9 +27,9 @@ namespace Tutorial
         static void Main(string[] args)
         {
             IGoEater cat = new Cat();
-            ISecurity dog = new Dog();
-            dog.Guard();
-            dog.Go();
+            ISecurity dog_all = new Dog(); // умеет всё т.к. присутствует наследование от IGoEater
+            IGoEater dog_goeat = new Dog(); // умеет только есть и ходить
+            dog_all.Guard();
 
             Console.ReadKey();
         }
